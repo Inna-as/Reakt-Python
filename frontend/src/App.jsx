@@ -11,7 +11,7 @@ function App() {
   }
 return (
 <>
-  <Header text="Шапка сайта"  />
+  <Header text="Шапка сайта" title="ХЕЛЛО" />
   <p onMouseEnter={pHover}>Hello World!</p>
   <h1>Счетчик кликов</h1>
     <button onClick={() => setCount(count + 1)}>
