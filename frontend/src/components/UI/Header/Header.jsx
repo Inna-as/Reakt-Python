@@ -1,6 +1,6 @@
 const Header = ({text: myText,title="Заголовок"}) => (
     
-     <header>
+    <header>
         { myText}
         <p>{title}</p>
      </header>
