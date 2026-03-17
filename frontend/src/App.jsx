@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Header from '@components/UI/Header'
 import Image from '@components/Image'
@@ -10,6 +10,15 @@ function App() {
   const [count, setCount] = useState(0)
   const [tempText, setTempText] = useState("Hello World!")
   const [userText, setUserText] = useState("")
+  const [showFirstHeader, setShowFirstHeader] = useState(true)
+
+  useEffect(
+    () => {
+      document.title = `Вы нажали ${count} раз`
+    },
+    [count]
+  )
+  // Функция в таком варианте useEffect вызывается: 1. При монтировании компонента. 2. При повторном рендере компонента который вызван изменением count.
 
   const pHover = () => { 
     console.log("Навели на p")
@@ -23,7 +32,9 @@ function App() {
 
   return (
     <>
-      <Header text="Шапка сайта" title="ХЕЛЛО" />
+      {showFirstHeader && <Header text="Шапка сайта" title="ХЕЛЛО" />}
+      <button onClick={() => setShowFirstHeader(!showFirstHeader)}>{showFirstHeader ? "Скрыть" : "Показать"} первый Header</button>
+
       <p onMouseEnter={pHover}>Hello World</p>
       <h1>Счётчик кликов</h1>
       <button onClick={() => setCount(count + 1)}>
